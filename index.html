@@ -61,7 +61,8 @@
             padding: 14px;
             font-size: 16px;
             cursor: pointer;
-            width: 100%;
+            width: 48%;
+            margin: 10px 1%;
             transition: background 0.3s;
         }
 
@@ -83,6 +84,11 @@
         .hidden {
             display: none;
         }
+
+        .button-group {
+            display: flex;
+            justify-content: space-between;
+        }
     </style>
 </head>
 <body>
@@ -101,9 +107,12 @@
             <h2>Create Your Account</h2>
             <input type="email" id="email" placeholder="Enter Email">
             <input type="text" id="username" placeholder="Choose Username">
+            <input type="password" id="create-password" placeholder="Create Password">
             <input type="text" id="code" placeholder="Enter Verification Code">
-            <button id="request-code">Request Code</button>
-            <button id="create-account-button" disabled>Create Account</button>
+            <div class="button-group">
+                <button id="request-code">Request Code</button>
+                <button id="create-account-button" disabled>Create Account</button>
+            </div>
             <p><a class="action-link" id="toggle-back">Already have an account? Login</a></p>
         </div>
     </div>
@@ -115,6 +124,7 @@
         const createAccountForm = document.getElementById('create-account-form');
         const requestCodeBtn = document.getElementById('request-code');
         const createAccountBtn = document.getElementById('create-account-button');
+        const loginButton = document.getElementById('login-button');
 
         toggleForm.addEventListener('click', () => {
             loginForm.classList.add('hidden');
@@ -153,20 +163,33 @@
             const enteredCode = document.getElementById('code').value;
             const storedCode = sessionStorage.getItem('verificationCode');
             const username = document.getElementById('username').value;
+            const password = document.getElementById('create-password').value;
 
             if (enteredCode !== storedCode) {
                 alert('Invalid code. Please check your email.');
                 return;
             }
 
-            if (!username) {
-                alert('Please enter a username.');
+            if (!username || !password) {
+                alert('Please fill in all fields.');
                 return;
             }
 
             alert('Account created successfully! You can now log in.');
             createAccountForm.classList.add('hidden');
             loginForm.classList.remove('hidden');
+        });
+
+        // Redirect to /scripts after login
+        loginButton.addEventListener('click', () => {
+            const username = document.getElementById('login').value;
+            const password = document.getElementById('password').value;
+
+            if (username && password) {
+                window.location.href = '/scripts';
+            } else {
+                alert('Please enter both username and password.');
+            }
         });
     </script>
 </body>
