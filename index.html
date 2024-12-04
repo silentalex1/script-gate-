@@ -1,1 +1,151 @@
-test
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login of Script Gate</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f3f4f6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .container {
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 400px;
+            max-width: 90%;
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.6s ease-in-out;
+        }
+
+        .input-field {
+            margin-bottom: 16px;
+        }
+
+        input[type="text"], input[type="password"], input[type="email"] {
+            width: 100%;
+            padding: 12px;
+            margin-top: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        .visual-line {
+            height: 2px;
+            background: #ccc;
+            margin: 20px 0;
+        }
+
+        .action-link {
+            color: #007bff;
+            text-decoration: none;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        button {
+            background: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            padding: 12px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #0056b3;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container" id="form-container">
+        <!-- Login Form -->
+        <div id="login-form">
+            <h2>Login</h2>
+            <div class="input-field">
+                <input type="text" id="login" placeholder="Login">
+            </div>
+            <div class="input-field">
+                <input type="password" id="password" placeholder="Enter Password">
+            </div>
+            <div class="visual-line"></div>
+            <a class="action-link" id="toggle-form">Create account</a>
+        </div>
+
+        <!-- Create Account Form -->
+        <div id="create-account-form" class="hidden">
+            <h2>Create Account</h2>
+            <div class="input-field">
+                <input type="email" id="email" placeholder="Enter Email">
+            </div>
+            <div class="input-field">
+                <input type="text" id="username" placeholder="Create Username">
+            </div>
+            <div class="input-field">
+                <input type="text" id="code" placeholder="Enter Code">
+            </div>
+            <div class="visual-line"></div>
+            <button id="create-account-button">Create Account</button>
+            <a class="action-link" id="toggle-back">Login to your account</a>
+        </div>
+    </div>
+
+    <script>
+        const toggleForm = document.getElementById('toggle-form');
+        const toggleBack = document.getElementById('toggle-back');
+        const loginForm = document.getElementById('login-form');
+        const createAccountForm = document.getElementById('create-account-form');
+        const formContainer = document.getElementById('form-container');
+
+        toggleForm.addEventListener('click', () => {
+            loginForm.classList.add('hidden');
+            createAccountForm.classList.remove('hidden');
+        });
+
+        toggleBack.addEventListener('click', () => {
+            createAccountForm.classList.add('hidden');
+            loginForm.classList.remove('hidden');
+        });
+
+        // Simulated backend functionality
+        const backend = {
+            users: [],
+
+            createAccount(email, username, code) {
+                this.users.push({ email, username, code });
+                alert('Account created successfully!');
+            },
+
+            login(username, password) {
+                alert('Login successful (simulation)!');
+            }
+        };
+
+        document.getElementById('create-account-button').addEventListener('click', () => {
+            const email = document.getElementById('email').value;
+            const username = document.getElementById('username').value;
+            const code = document.getElementById('code').value;
+
+            backend.createAccount(email, username, code);
+        });
+
+    </script>
+</body>
+</html>
+
