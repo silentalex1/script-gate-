@@ -1,4 +1,4 @@
-// Create account API call
+
 createAccountBtn.addEventListener('click', async () => {
     const enteredCode = document.getElementById('code').value;
     const storedCode = sessionStorage.getItem('verificationCode');
@@ -33,7 +33,7 @@ createAccountBtn.addEventListener('click', async () => {
     }
 });
 
-// Login API call
+
 loginButton.addEventListener('click', async () => {
     const username = document.getElementById('login').value;
     const password = document.getElementById('password').value;
