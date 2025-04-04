@@ -135,11 +135,18 @@
         nav .container {display:flex; justify-content:space-between; align-items:center;}
         
         nav .logo {
+            display: flex;
+            align-items: center;
             font-size: 1.8rem;
             font-weight: 700;
             color: #7be9ff;
             text-shadow: 0 0 15px rgba(123, 233, 255, 0.5);
             letter-spacing: 1px;
+        }
+        
+        nav .logo img {
+            height: 40px;
+            margin-right: 10px;
         }
         
         nav ul {display:flex; list-style:none; gap: 10px;}
@@ -256,7 +263,7 @@
         .showcase h2:after {
             content: '';
             position: absolute;
-            bottom: -15px;
+            bottom Sybottom: -15px;
             left: 50%;
             transform: translateX(-50%);
             width: 80px;
@@ -507,7 +514,10 @@
     
     <nav>
         <div class="container">
-            <div class="logo">Extensions</div>
+            <div class="logo">
+                <img src="https://raw.githubusercontent.com/silentalex1/script-gate-/main/xtendifylogo.png" alt="Xtendify Logo">
+                Extensions
+            </div>
             <ul>
                 <li><a href="/">Home</a></li>
                 <li><a href="/tos">ToS</a></li>
