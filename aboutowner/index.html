@@ -450,6 +450,53 @@
             font-size: 1rem;
             color: #a8b2d1;
         }
+        
+        /* Notification Styling */
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(100, 255, 218, 0.15);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(100, 255, 218, 0.3);
+            color: #64ffda;
+            padding: 15px 20px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            display: flex;
+            align-items: center;
+            transform: translateX(150%);
+            opacity: 0;
+            transition: all 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+            z-index: 1000;
+        }
+        
+        .notification.show {
+            transform: translateX(0);
+            opacity: 1;
+        }
+        
+        .notification-icon {
+            margin-right: 12px;
+            background: rgba(100, 255, 218, 0.2);
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .notification-icon svg {
+            width: 18px;
+            height: 18px;
+            fill: #64ffda;
+        }
+        
+        .notification-text {
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
     </style>
 </head>
 <body>
@@ -610,6 +657,16 @@
                                 </div>
                                 <div class="benefit-text">
                                     Be the first to try beta versions of new extensions
+                                </div>
+                            </div>
+                            <div class="benefit-item">
+                                <div class="benefit-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                        <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6l-2 2V4h16v12z"/>
+                                    </svg>
+                                </div>
+                                <div class="benefit-text">
+                                    To hangout/make friends or to have a chat with our staff or including the owner
                                 </div>
                             </div>
                         </div>
