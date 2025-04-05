@@ -56,7 +56,7 @@
         .particle:nth-child(4) {width:4px; height:4px; top:25%; left:40%; animation-delay:6s; background:rgba(126,213,255,0.8); filter:blur(1px);}
         .particle:nth-child(5) {width:6px; height:6px; top:30%; left:50%; animation-delay:8s; background:rgba(255,255,255,0.8); filter:blur(2px);}
         .particle:nth-child(6) {width:3px; height:3px; top:35%; left:60%; animation-delay:10s; background:rgba(115,255,216,0.8); filter:blur(1px);}
-        .particle:nth-child(7) {width:5px; height:5px; top:40%; left:70%; animation-delay:12s; background:rgba(126,213,255,0.8); filter:blur(1px);}
+        .particle:nth-child(7) {width:5px; height:5px; top:40%; left:70%; animation-delay:12s; background:rgba(126,213,255,0.8A); filter:blur(1px);}
         .particle:nth-child(8) {width:2px; height:2px; top:45%; left:80%; animation-delay:14s; background:rgba(255,255,255,0.8); filter:blur(1px);}
         .particle:nth-child(9) {width:4px; height:4px; top:50%; left:90%; animation-delay:16s; background:rgba(115,255,216,0.8); filter:blur(1px);}
         .particle:nth-child(10) {width:3px; height:3px; top:55%; left:10%; animation-delay:18s; background:rgba(126,213,255,0.8); filter:blur(1px);}
@@ -140,6 +140,7 @@
             color: #7be9ff;
             text-shadow: 0 0 15px rgba(123, 233, 255, 0.5);
             letter-spacing: 1px;
+            padding-left: 40px; 
         }
         
         nav ul {display:flex; list-style:none; gap: 10px;}
@@ -178,6 +179,11 @@
             border-color: rgba(123, 233, 255, 0.3);
             transform: translateY(-2px);
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        nav ul li a.active {
+            background: rgba(123, 233, 255, 0.1);
+            border-color: rgba(123, 233, 255, 0.3);
         }
 
         header {
@@ -389,7 +395,7 @@
         .btn-store {
             background: transparent;
             color: #7be9ff;
-            border: 2px solid rgba(123, 233, 255, 0.3);
+            border: 2px solid rgba(123, 233, 255, 0.3) !important;
         }
         
         .btn-about {
@@ -423,7 +429,7 @@
         
         .btn-store:hover {
             box-shadow: 0 8px 20px rgba(123, 233, 255, 0.2);
-            border-color: rgba(123, 233, 255, 0.6);
+            border-color: rgba(123, 233, 255, 0.6) !important;
         }
         
         .btn-about:hover {
@@ -515,11 +521,12 @@
         <div class="container">
             <div class="logo">Extensions</div>
             <ul>
-                <li><a href="/">Home</a></li>
+                <li><a href="/" class="active">Home</a></li>
                 <li><a href="/tos">ToS</a></li>
                 <li><a href="/aboutsite">About Site</a></li>
                 <li><a href="/aboutowner">About Owner</a></li>
                 <li><a href="/crxmethod">CRX Method</a></li>
+                <li><a href="/showcases">Showcases</a></li>
             </ul>
         </div>
     </nav>
@@ -543,7 +550,7 @@
                     <a href="/privacyrights" class="btn btn-about">About Extension</a>
                 </div>
                 <div class="extension">
-                    <div class="badge">Being worked on</div>
+                    <div class="badge yellow">Halfway done</div>
                     <h3>Vidpulse</h3>
                     <a href="#" class="btn btn-download">Download</a>
                     <a href="https://chrome.google.com/webstore" target="_blank" class="btn btn-store">Go to Extension</a>
