@@ -135,18 +135,11 @@
         nav .container {display:flex; justify-content:space-between; align-items:center;}
         
         nav .logo {
-            display: flex;
-            align-items: center;
             font-size: 1.8rem;
             font-weight: 700;
             color: #7be9ff;
             text-shadow: 0 0 15px rgba(123, 233, 255, 0.5);
             letter-spacing: 1px;
-        }
-        
-        nav .logo img {
-            height: 40px;
-            margin-right: 10px;
         }
         
         nav ul {display:flex; list-style:none; gap: 10px;}
@@ -263,7 +256,7 @@
         .showcase h2:after {
             content: '';
             position: absolute;
-            bottom Sybottom: -15px;
+            bottom: -15px;
             left: 50%;
             transform: translateX(-50%);
             width: 80px;
@@ -344,6 +337,12 @@
             letter-spacing: 0.5px;
         }
         
+        .badge.yellow {
+            background: linear-gradient(135deg, #ffeb3b, #ffd700);
+            color: #333;
+            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
+        }
+        
         .extension h3 {
             color: #7be9ff;
             font-size: 1.8rem;
@@ -390,7 +389,7 @@
         .btn-store {
             background: transparent;
             color: #7be9ff;
-            border: 2px solid rgba(123, 233, 255, 0.3) !important;
+            border: 2px solid rgba(123, 233, 255, 0.3);
         }
         
         .btn-about {
@@ -424,7 +423,7 @@
         
         .btn-store:hover {
             box-shadow: 0 8px 20px rgba(123, 233, 255, 0.2);
-            border-color: rgba(123, 233, 255, 0.6) !important;
+            border-color: rgba(123, 233, 255, 0.6);
         }
         
         .btn-about:hover {
@@ -514,15 +513,13 @@
     
     <nav>
         <div class="container">
-            <div class="logo">
-                <img src="https://raw.githubusercontent.com/silentalex1/script-gate-/main/xtendifylogo.png" alt="Xtendify Logo">
-                Extensions
-            </div>
+            <div class="logo">Extensions</div>
             <ul>
                 <li><a href="/">Home</a></li>
                 <li><a href="/tos">ToS</a></li>
                 <li><a href="/aboutsite">About Site</a></li>
                 <li><a href="/aboutowner">About Owner</a></li>
+                <li><a href="/crxmethod">CRX Method</a></li>
             </ul>
         </div>
     </nav>
@@ -539,7 +536,7 @@
             <h2>Our Extensions</h2>
             <div class="extension-slider">
                 <div class="extension">
-                    <div class="badge">Being worked on</div>
+                    <div class="badge yellow">Halfway done</div>
                     <h3>Privacy Rights</h3>
                     <a href="#" class="btn btn-download">Download</a>
                     <a href="https://chrome.google.com/webstore" target="_blank" class="btn btn-store">Go to Extension</a>
