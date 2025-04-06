@@ -3,284 +3,101 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Under Construction | Chrome Extensions</title>
+    <title>CRX Method | Chrome Extensions</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
-        }
-        
-        body {
-            background: #0a192f;
-            color: #ccd6f6;
-            line-height: 1.8;
-            overflow-x: hidden;
-            background-image: radial-gradient(circle at 10% 20%, rgba(100, 255, 218, 0.03) 0%, transparent 40%),
-                             radial-gradient(circle at 90% 80%, rgba(100, 255, 218, 0.05) 0%, transparent 40%);
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        
-        nav {
-            background: rgba(17, 34, 64, 0.95);
-            padding: 1rem 0;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            box-shadow: 0 4px 20px rgba(0, 123, 255, 0.2);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(100, 255, 218, 0.1);
-        }
-        
-        nav .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        nav .logo {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: #64ffda;
-            text-shadow: 0 0 10px rgba(100, 255, 218, 0.3);
-            letter-spacing: 1px;
-        }
-        
-        nav ul {
-            display: flex;
-            list-style: none;
-        }
-        
-        nav ul li {
-            margin-left: 0.8rem;
-        }
-        
-        nav ul li a {
-            color: #ccd6f6;
-            text-decoration: none;
-            font-weight: 500;
-            padding: 8px 18px;
-            border-radius: 8px;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-            display: block;
-            letter-spacing: 0.5px;
-            font-size: 0.95rem;
-            border: 1px solid transparent;
-        }
-        
-        nav ul li a:hover {
-            background: rgba(100, 255, 218, 0.1);
-            color: #64ffda;
-            border: 1px solid rgba(100, 255, 218, 0.3);
-            transform: translateY(-2px);
-        }
-        
-        nav ul li a.active {
-            background: rgba(100, 255, 218, 0.1);
-            color: #64ffda;
-            border: 1px solid rgba(100, 255, 218, 0.3);
-        }
-        
-        .progress-header {
-            background: linear-gradient(135deg, #112240, #0a192f);
-            color: #64ffda;
-            padding: 6rem 0;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .progress-header::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: 
-                radial-gradient(circle at 20% 30%, rgba(100, 255, 218, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 80% 70%, rgba(100, 255, 218, 0.1) 0%, transparent 50%);
-        }
-        
-        .progress-header h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            font-weight: 600;
-            background: linear-gradient(to right, #64ffda, #8aa2f8);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-shadow: 0 0 20px rgba(100, 255, 218, 0.3);
-            position: relative;
-        }
-        
-        .progress-header p {
-            font-size: 1.3rem;
-            opacity: 0.9;
-            max-width: 600px;
-            margin: 0 auto;
-            color: #a8b2d1;
-        }
-        
-        .progress-content {
-            padding: 5rem 0;
-            text-align: center;
-            position: relative;
-            background: rgba(17, 34, 64, 0.3);
-            min-height: 50vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .floating-stars {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            pointer-events: none;
-            z-index: 0;
-        }
-        
-        .star {
-            position: absolute;
-            background: #64ffda;
-            border-radius: 50%;
-            opacity: 0.2;
-            animation: twinkle 4s infinite ease-in-out;
-        }
-        
-        @keyframes twinkle {
-            0%, 100% { opacity: 0.2; }
-            50% { opacity: 0.5; }
-        }
-        
-        .progress-box {
-            max-width: 700px;
-            margin: auto;
-            background: rgba(17, 34, 64, 0.8);
-            padding: 3.5rem;
-            border-radius: 16px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-            backdrop-filter: blur(10px);
-            position: relative;
-            z-index: 1;
-            border: 1px solid rgba(100, 255, 218, 0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        
-        .progress-box:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3), 0 0 20px rgba(100, 255, 218, 0.1);
-        }
-        
-        .progress-box h2 {
-            color: #64ffda;
-            font-size: 2rem;
-            margin-bottom: 1.8rem;
-            text-align: center;
-            position: relative;
-            padding-bottom: 15px;
-        }
-        
-        .progress-box h2::after {
-            content: "";
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 3px;
-            background: linear-gradient(to right, #64ffda, transparent);
-            border-radius: 3px;
-        }
-        
-        .progress-box p {
-            font-size: 1.1rem;
-            margin-bottom: 1.2rem;
-            color: #a8b2d1;
-            line-height: 1.9;
-        }
-        
-        .loader {
-            display: flex;
-            justify-content: center;
-            margin: 2rem 0;
-        }
-        
-        .dot {
-            width: 15px;
-            height: 15px;
-            margin: 0 8px;
-            background: #64ffda;
-            border-radius: 50%;
-            animation: bounce 1.5s infinite ease-in-out;
-        }
-        
-        .dot:nth-child(1) {
-            animation-delay: 0s;
-        }
-        
-        .dot:nth-child(2) {
-            animation-delay: 0.2s;
-        }
-        
-        .dot:nth-child(3) {
-            animation-delay: 0.4s;
-        }
-        
-        @keyframes bounce {
-            0%, 100% {
-                transform: translateY(0);
-                opacity: 0.3;
-            }
-            50% {
-                transform: translateY(-15px);
-                opacity: 1;
-            }
-        }
-        
-        footer {
-            text-align: center;
-            padding: 3rem 0;
-            background: rgba(10, 25, 47, 0.95);
-            color: #a8b2d1;
-            border-top: 1px solid rgba(100, 255, 218, 0.1);
-        }
-        
-        footer p {
-            font-size: 1rem;
-            opacity: 0.8;
-        }
-        
-        footer span {
-            color: #64ffda;
-            font-weight: 500;
-        }
-        
-        @media (prefers-reduced-motion: no-preference) {
-            @keyframes float {
-                0%, 100% { transform: translateY(0); }
-                50% { transform: translateY(-10px); }
-            }
-        }
+        *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
+        body{background:#0a192f;color:#ccd6f6;line-height:1.8;overflow-x:hidden;background-image:radial-gradient(circle at 10% 20%,rgba(100,255,218,0.03) 0%,transparent 40%),radial-gradient(circle at 90% 80%,rgba(100,255,218,0.05) 0%,transparent 40%)}
+        .container{max-width:1200px;margin:0 auto;padding:0 20px}
+        nav{background:rgba(17,34,64,0.95);padding:1rem 0;position:sticky;top:0;z-index:100;box-shadow:0 4px 20px rgba(0,123,255,0.2);backdrop-filter:blur(10px);border-bottom:1px solid rgba(100,255,218,0.1)}
+        nav .container{display:flex;justify-content:space-between;align-items:center}
+        nav .logo{font-size:1.8rem;font-weight:700;color:#64ffda;text-shadow:0 0 10px rgba(100,255,218,0.3);letter-spacing:1px;cursor:pointer;transition:transform 0.3s ease}
+        nav .logo:hover{transform:scale(1.05)}
+        nav ul{display:flex;list-style:none;align-items:center;gap:1rem}
+        nav ul li{position:relative}
+        nav ul li a{color:#ccd6f6;text-decoration:none;font-weight:500;padding:10px 20px;border-radius:12px;transition:all 0.4s ease;position:relative;overflow:hidden;display:block;letter-spacing:0.8px;font-size:1rem;border:1px solid rgba(100,255,218,0);background:linear-gradient(45deg,rgba(100,255,218,0.05),rgba(138,162,248,0.05))}
+        nav ul li a::before{content:'';position:absolute;top:0;left:0;width:100%;height:100%;background:linear-gradient(45deg,rgba(100,255,218,0.2),transparent);transform:skewX(-20deg) translateX(-150%);transition:transform 0.4s ease;z-index:-1}
+        nav ul li a:hover::before{transform:skewX(-20deg) translateX(0)}
+        nav ul li a:hover{background:linear-gradient(45deg,rgba(100,255,218,0.15),rgba(138,162,248,0.15));color:#64ffda;border:1px solid rgba(100,255,218,0.4);transform:translateY(-3px);box-shadow:0 5px 15px rgba(100,255,218,0.2)}
+        nav ul li a.active{background:linear-gradient(45deg,rgba(100,255,218,0.25),rgba(138,162,248,0.25));color:#64ffda;border:1px solid rgba(100,255,218,0.6);box-shadow:0 5px 15px rgba(100,255,218,0.3)}
+        nav ul li a.active::after{content:'';position:absolute;bottom:-2px;left:50%;width:40%;height:2px;background:#64ffda;transform:translateX(-50%);border-radius:2px}
+        .progress-header{background:linear-gradient(135deg,#112240,#0a192f);color:#64ffda;padding:6rem 0;text-align:center;position:relative;overflow:hidden}
+        .progress-header::before{content:"";position:absolute;top:0;left:0;width:100%;height:100%;background:radial-gradient(circle at 20% 30%,rgba(100,255,218,0.1) 0%,transparent 50%),radial-gradient(circle at 80% 70%,rgba(100,255,218,0.1) 0%,transparent 50%)}
+        .progress-header h1{font-size:3.5rem;margin-bottom:1rem;font-weight:600;background:linear-gradient(to right,#64ffda,#8aa2f8);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-shadow:0 0 20px rgba(100,255,218,0.3);position:relative}
+        .progress-header p{font-size:1.3rem;opacity:0.9;max-width:600px;margin:0 auto;color:#a8b2d1}
+        .content-section{padding:5rem 0;text-align:center;position:relative;background:rgba(17,34,64,0.3);min-height:50vh;display:flex;align-items:center;justify-content:center}
+        .floating-stars{position:absolute;width:100%;height:100%;top:0;left:0;pointer-events:none;z-index:0}
+        .star{position:absolute;background:#64ffda;border-radius:50%;opacity:0.2;animation:twinkle 4s infinite ease-in-out}
+        @keyframes twinkle{0%,100%{opacity:0.2}50%{opacity:0.5}}
+        .crx-box{max-width:700px;margin:auto;background:rgba(17,34,64,0.8);padding:3.5rem;border-radius:16px;box-shadow:0 8px 32px rgba(0,0,0,0.2);backdrop-filter:blur(10px);position:relative;z-index:1;border:1px solid rgba(100,255,218,0.1);transition:transform 0.3s ease,box-shadow 0.3s ease}
+        .crx-box:hover{transform:translateY(-5px);box-shadow:0 12px 40px rgba(0,0,0,0.3),0 0 20px rgba(100,255,218,0.1)}
+        .crx-box h2{color:#64ffda;font-size:2rem;margin-bottom:1.8rem;text-align:center;position:relative;padding-bottom:15px}
+        .crx-box h2::after{content:"";position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:80px;height:3px;background:linear-gradient(to right,#64ffda,transparent);border-radius:3px}
+        .crx-box p{font-size:1.1rem;margin-bottom:1.2rem;color:#a8b2d1;line-height:1.9}
+        .input-container{margin:2rem 0}
+        #crxInput{width:100%;padding:16px 20px;font-size:1.1rem;background:rgba(15,30,57,0.7);color:#ccd6f6;border:1px solid rgba(100,255,218,0.2);border-radius:8px;transition:all 0.3s ease;outline:none}
+        #crxInput:focus{border-color:#64ffda;box-shadow:0 0 15px rgba(100,255,218,0.2)}
+        #crxInput::placeholder{color:#8892b0;opacity:0.8}
+        .buttons-container{display:flex;justify-content:center;gap:15px;margin:2rem 0}
+        .primary-btn,.secondary-btn{padding:12px 24px;font-size:1rem;font-weight:500;border-radius:8px;cursor:pointer;transition:all 0.3s ease;letter-spacing:0.5px;border:none;outline:none}
+        .primary-btn{background:#64ffda;color:#0a192f;border:1px solid transparent}
+        .primary-btn:hover{background:rgba(100,255,218,0.9);transform:translateY(-2px);box-shadow:0 4px 12px rgba(100,255,218,0.2)}
+        .secondary-btn{background:transparent;color:#64ffda;border:1px solid #64ffda}
+        .secondary-btn:hover{background:rgba(100,255,218,0.1);transform:translateY(-2px);box-shadow:0 4px 12px rgba(100,255,218,0.1)}
+        .scan-container{margin-top:2rem;height:0;overflow:hidden;transition:height 0.5s ease}
+        .scan-container.active{height:120px}
+        .scan-animation{height:60px;position:relative;background:rgba(15,30,57,0.5);border-radius:8px;overflow:hidden}
+        .scan-line{height:2px;width:100%;background:linear-gradient(to right,transparent,#64ffda,transparent);position:absolute;top:0;left:0;transform:translateY(-50%);animation:scan 2s linear infinite;.opacity:0}
+        @keyframes scan{0%{top:0;opacity:0}10%{opacity:1}90%{opacity:1}100%{top:100%;opacity:0}}
+        .scan-result{padding:15px;text-align:center;font-size:1.1rem;color:#64ffda;margin-top:10px;opacity:0;transition:opacity 0.5s ease;height:50px}
+        .scan-result.visible{opacity:1}
+        footer{text-align:center;padding:3rem 0;background:rgba(10,25,47,0.95);color:#a8b2d1;border-top:1px solid rgba(100,255,218,0.1)}
+        footer p{font-size:1rem;opacity:0.8}
+        footer span{color:#64ffda;font-weight:500}
+        @media (prefers-reduced-motion:no-preference){@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}}
+        .shake{animation:shake 0.5s ease-in-out}
+        @keyframes shake{0%,100%{transform:translateX(0)}20%,60%{transform:translateX(-5px)}40%,80%{transform:translateX(5px)}}
+        :root{--accent-color:#64ffda;--bg-dark:#0a192f;--bg-mid:#112240;--text-main:#ccd6f6;--text-secondary:#a8b2d1}
+        .glow-effect{position:relative}
+        .glow-effect::after{content:'';position:absolute;top:-5px;left:-5px;right:-5px;bottom:-5px;border-radius:20px;background:radial-gradient(circle at 50% 50%,rgba(100,255,218,0.4),transparent 70%);z-index:-1;opacity:0;transition:opacity 0.3s ease}
+        .crx-box:hover .glow-effect::after{opacity:0.6}
+        .pulse-btn{position:relative;overflow:hidden}
+        .pulse-btn::after{content:'';position:absolute;top:50%;left:50%;width:100%;height:100%;background:rgba(100,255,218,0.4);border-radius:50%;transform:translate(-50%,-50%) scale(0);opacity:0;transition:transform 0.5s,opacity 0.5s}
+        .pulse-btn:active::after{transform:translate(-50%,-50%) scale(2);opacity:0;transition:0s}
+        .hover-lift{transition:transform 0.3s cubic-bezier(0.68,-0.55,0.27,1.55)}
+        .hover-lift:hover{transform:translateY(-8px) scale(1.01)}
+        .noise-overlay{position:fixed;top:0;left:0;width:100%;height:100%;background-image:url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIj48ZmlsdGVyIGlkPSJhIiB4PSIwIiB5PSIwIj48ZmVUdXJidWxlbmNlIGJhc2VGcmVxdWVuY3k9Ii43NSIgc3RpdGNoVGlsZXM9InN0aXRjaCIgdHlwZT0iZnJhY3RhbE5vaXNlIi8+PGZlQ29sb3JNYXRyaXggdHlwZT0ic2F0dXJhdGUiIHZhbHVlcz0iMCIvPjwvZmlsdGVyPjxwYXRoIGQ9Ik0wIDBoMzAwdjMwMEgweiIgZmlsdGVyPSJ1cmwoI2EpIiBvcGFjaXR5PSIuMDUiLz48L3N2Zz4=');pointer-events:none;z-index:1000;opacity:0.3;mix-blend-mode:overlay}
+        @media (max-width:768px){nav ul{display:none;flex-direction:column;position:absolute;top:100%;left:0;width:100%;background:rgba(17,34,64,0.95);padding:1.5rem 0;transition:all 0.4s ease;z-index:100;border-top:1px solid rgba(100,255,218,0.2)}nav ul.active{display:flex;animation:slideIn 0.4s ease}nav ul li{margin:0.8rem 0}nav ul li a{padding:14px 25px;display:block;width:100%;text-align:center;border-radius:10px}.mobile-menu-btn{display:block;background:none;border:none;color:var(--accent-color);font-size:1.5rem;cursor:pointer;padding:5px}.mobile-menu-icon{display:block;width:30px;height:3px;background:var(--accent-color);position:relative;transition:all 0.3s ease}.mobile-menu-icon::before,.mobile-menu-icon::after{content:'';position:absolute;width:100%;height:100%;background:var(--accent-color);transition:all 0.3s ease}.mobile-menu-icon::before{transform:translateY(-10px)}.mobile-menu-icon::after{transform:translateY(10px)}.mobile-menu-btn.active .mobile-menu-icon{background:transparent}.mobile-menu-btn.active .mobile-menu-icon::before{transform:rotate(45deg)}.mobile-menu-btn.active .mobile-menu-icon::after{transform:rotate(-45deg)}}
+        @keyframes slideIn{from{opacity:0;transform:translateY(-20px)}to{opacity:1;transform:translateY(0)}}
+        .advanced-input{position:relative;overflow:hidden}
+        .advanced-input::after{content:'';position:absolute;left:0;bottom:0;width:100%;height:2px;background:linear-gradient(to right,var(--accent-color),transparent);transform:translateX(-100%);transition:transform 0.3s ease}
+        .advanced-input:focus-within::after{transform:translateX(0)}
+        .particle{position:absolute;background:var(--accent-color);width:6px;height:6px;border-radius:50%;pointer-events:none;opacity:0.5;animation:float-particle 3s ease-in-out infinite}
+        @keyframes float-particle{0%,100%{transform:translateY(0) rotate(0deg);opacity:0.5}50%{transform:translateY(-20px) rotate(180deg);opacity:0.2}}
+        ::-webkit-scrollbar{width:8px}
+        ::-webkit-scrollbar-track{background:var(--bg-mid)}
+        ::-webkit-scrollbar-thumb{background:var(--accent-color);border-radius:10px}
+        ::-webkit-scrollbar-thumb:hover{background:rgba(100,255,218,0.8)}
+        .ripple{position:absolute;border-radius:50%;background:rgba(100,255,218,0.2);transform:scale(0);animation:ripple-effect 1s linear;pointer-events:none}
+        @keyframes ripple-effect{to{transform:scale(4);opacity:0}}
+        .loader-container{display:none;position:relative;margin:1rem auto;width:60px;height:60px}
+        .loader{border:3px solid rgba(100,255,218,0.1);border-radius:50%;border-top:3px solid var(--accent-color);width:100%;height:100%;animation:spin 1s linear infinite}
+        @keyframes spin{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
+        .notification{position:fixed;top:20px;right:20px;padding:15px 20px;background:rgba(17,34,64,0.95);color:var(--accent-color);border-left:4px solid var(--accent-color);border-radius:4px;box-shadow:0 4px 20px rgba(0,0,0,0.2);transform:translateX(150%);transition:transform 0.3s ease;z-index:1000;max-width:300px}
+        .notification.show{transform:translateX(0)}
+        .progress-bar{height:4px;background:rgba(15,30,57,0.5);margin-top:1rem;border-radius:2px;overflow:hidden;display:none}
+        .progress-bar-fill{height:100%;width:0%;background:var(--accent-color);transition:width 0.3s ease}
+        .copy-icon{font-size:1.2rem;cursor:pointer;margin-left:10px;color:var(--accent-color);opacity:0.7;transition:opacity 0.3s ease}
+        .copy-icon:hover{opacity:1}
+        .result-link{display:inline-flex;align-items:center;padding:10px 15px;background:rgba(15,30,57,0.7);border-radius:8px;margin-top:1rem;font-size:1rem;color:var(--accent-color);border:1px solid rgba(100,255,218,0.2);word-break:break-all;max-width:100%}
     </style>
 </head>
 <body>
+    <div class="noise-overlay"></div>
     <nav>
         <div class="container">
             <div class="logo">Extensions</div>
-            <ul>
+            <ul id="navMenu">
                 <li><a href="/">Home</a></li>
                 <li><a href="/tos">Tos</a></li>
                 <li><a href="/aboutsite">About Site</a></li>
@@ -289,63 +106,53 @@
                 <li><a href="/showcase">Showcase</a></li>
                 <li><a href="/linkleap">Link Leap</a></li>
             </ul>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <div class="mobile-menu-icon"></div>
+            </button>
         </div>
     </nav>
-    
     <header class="progress-header">
         <div class="container">
-            <h1>Under Construction</h1>
-            <p>This page is being made in progress, please wait</p>
+            <h1>CRX Method</h1>
+            <p>Download and validate Chrome extensions</p>
         </div>
     </header>
-    
-    <section class="progress-content">
+    <section class="content-section">
         <div class="floating-stars" id="stars"></div>
         <div class="container">
-            <div class="progress-box">
-                <h2>Being made in progress</h2>
-                <p>We're working hard to bring you amazing content soon. This page is currently under development.</p>
-                
-                <div class="loader">
-                    <div class="dot"></div>
-                    <div class="dot"></div>
-                    <div class="dot"></div>
+            <div class="crx-box glow-effect hover-lift">
+                <h2>Get Your Extension</h2>
+                <div class="input-container advanced-input">
+                    <input type="text" id="crxInput" placeholder="Enter chrome url or id" autocomplete="off">
                 </div>
-                
-                <p>Thank you for your patience. Please check back later!</p>
+                <div class="buttons-container">
+                    <button id="downloadBtn" class="primary-btn pulse-btn">Download Extension</button>
+                    <button id="validateBtn" class="secondary-btn pulse-btn">Detect If Its Valid</button>
+                </div>
+                <div class="scan-container" id="scanContainer">
+                    <div class="scan-animation">
+                        <div class="scan-line"></div>
+                    </div>
+                    <div class="scan-result" id="scanResult"></div>
+                </div>
+                <div class="loader-container" id="loaderContainer">
+                    <div class="loader"></div>
+                </div>
+                <div class="progress-bar" id="progressBar">
+                    <div class="progress-bar-fill" id="progressBarFill"></div>
+                </div>
+                <div id="resultContainer"></div>
             </div>
         </div>
     </section>
-    
+    <div class="notification" id="notification"></div>
     <footer>
         <div class="container">
             <p>© 2025 <span>Useful Chrome Extensions</span>. Made by Smart Script Studios.</p>
         </div>
     </footer>
-    
     <script>
-        const starsContainer = document.getElementById('stars');
-        const numberOfStars = 50;
-        
-        for (let i = 0; i < numberOfStars; i++) {
-            const star = document.createElement('div');
-            star.classList.add('star');
-            
-            const posX = Math.random() * 100;
-            const posY = Math.random() * 100;
-            
-            const size = Math.random() * 3 + 1;
-            
-            const delay = Math.random() * 4;
-            
-            star.style.left = `${posX}%`;
-            star.style.top = `${posY}%`;
-            star.style.width = `${size}px`;
-            star.style.height = `${size}px`;
-            star.style.animationDelay = `${delay}s`;
-            
-            starsContainer.appendChild(star);
-        }
+        document.addEventListener('DOMContentLoaded',function(){const starsContainer=document.getElementById('stars');const crxInput=document.getElementById('crxInput');const downloadBtn=document.getElementById('downloadBtn');const validateBtn=document.getElementById('validateBtn');const scanContainer=document.getElementById('scanContainer');const scanResult=document.getElementById('scanResult');const mobileMenuBtn=document.getElementById('mobileMenuBtn');const navMenu=document.getElementById('navMenu');const loaderContainer=document.getElementById('loaderContainer');const progressBar=document.getElementById('progressBar');const progressBarFill=document.getElementById('progressBarFill');const resultContainer=document.getElementById('resultContainer');const notification=document.getElementById('notification');const logo=document.querySelector('.logo');const CHROME_WEB_STORE_API='service/update2/crx?response=redirect&prodversion=49.0&acceptformat=crx3&x=id%3D';const EXTENSION_API='https://extensions-api.vercel.app/api/extension/';const EXTENSION_VALIDATOR_API='https://extensions-validator.vercel.app/api/validate/';const EXTENSION_ID_PATTERN=/([a-z]{32})/i;const CHROME_STORE_PATTERN=/chrome\.google\.com\/webstore/;const CHROME_EXTENSION_PATTERN=/chrome-extension:\/\//;createStars();setupEventListeners();generateParticles();function createStars(){const starCount=50;for(let i=0;i<starCount;i++){const star=document.createElement('div');star.classList.add('star');const left=Math.random()*100;const top=Math.random()*100;const size=Math.random()*3+1;const delay=Math.random()*4;star.style.left=left+'%';star.style.top=top+'%';star.style.width=size+'px';star.style.height=size+'px';star.style.animationDelay=delay+'s';starsContainer.appendChild(star)}}function generateParticles(){const particleCount=20;for(let i=0;i<particleCount;i++){const particle=document.createElement('div');particle.classList.add('particle');const left=Math.random()*document.documentElement.clientWidth;const top=Math.random()*document.documentElement.clientHeight;const delay=Math.random()*5;particle.style.left=left+'px';particle.style.top=top+'px';particle.style.animationDelay=delay+'s';document.body.appendChild(particle)}}function setupEventListeners(){downloadBtn.addEventListener('click',handleDownload);validateBtn.addEventListener('click',handleValidate);crxInput.addEventListener('keypress',function(event){if(event.key==='Enter'||event.which===13){handleDownload()}});document.addEventListener('mousemove',createRippleEffect);mobileMenuBtn.addEventListener('click',function(){this.classList.toggle('active');navMenu.classList.toggle('active');document.body.classList.toggle('nav-open')});logo.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'})});document.addEventListener('visibilitychange',handleVisibilityChange);window.addEventListener('online',handleOnlineStatus);window.addEventListener('offline',handleOfflineStatus);window.addEventListener('scroll',handleScroll);navMenu.querySelectorAll('a').forEach(link=>{link.addEventListener('click',function(e){e.preventDefault();const href=this.getAttribute('href');if(href==='/'){window.scrollTo({top:0,behavior:'smooth'})}else{showNotification(`Navigating to ${href}`);setTimeout(()=>{window.location.href=href},1000)}})});}function handleScroll(){const scrollPos=window.scrollY;nav.style.background=scrollPos>50?'rgba(17,34,64,0.98)':'rgba(17,34,64,0.95)';nav.style.boxShadow=scrollPos>50?'0 6px 25px rgba(0,123,255,0.3)':'0 4px 20px rgba(0,123,255,0.2)'}function handleVisibilityChange(){if(document.visibilityState==='hidden'){pauseAnimations()}else{resumeAnimations()}}function pauseAnimations(){document.querySelectorAll('.star,.particle,.scan-line').forEach(element=>{element.style.animationPlayState='paused'})}function resumeAnimations(){document.querySelectorAll('.star,.particle,.scan-line').forEach(element=>{element.style.animationPlayState='running'})}function handleOnlineStatus(){showNotification('Connection restored!')}function handleOfflineStatus(){showNotification('You are offline. Some features may not work.')}function createRippleEffect(event){if(Math.random()>0.98){const x=event.clientX||(event.touches?event.touches[0].clientX:0);const y=event.clientY||(event.touches?event.touches[0].clientY:0);const ripple=document.createElement('div');ripple.classList.add('ripple');ripple.style.left=x+'px';ripple.style.top=y+'px';document.body.appendChild(ripple);setTimeout(()=>{ripple.remove()},1000)}}function showNotification(message){notification.textContent=message;notification.classList.add('show');setTimeout(()=>{notification.classList.remove('show')},3000)}async function handleDownload(){const input=crxInput.value.trim();if(!input){crxInput.classList.add('shake');setTimeout(()=>{crxInput.classList.remove('shake')},500);showNotification('Please enter a URL or ID');return}loaderContainer.style.display='block';progressBar.style.display='block';let extensionId='';if(CHROME_STORE_PATTERN.test(input)||EXTENSION_ID_PATTERN.test(input)){extensionId=input.match(EXTENSION_ID_PATTERN)[0]}else{showNotification('Invalid input format');loaderContainer.style.display='none';progressBar.style.display='none';return}try{progressBarFill.style.width='30%';const response=await fetch(`${EXTENSION_API}${extensionId}`,{headers:{'Accept':'application/json'}});progressBarFill.style.width='60%';if(!response.ok){throw new Error('API request failed')}const data=await response.json();progressBarFill.style.width='90%';const downloadUrl=`https://clients2.google.com/${CHROME_WEB_STORE_API}${extensionId}`;const link=document.createElement('a');link.href=downloadUrl;link.classList.add('result-link');link.textContent=downloadUrl;link.download=`${extensionId}.crx`;const copyIcon=document.createElement('span');copyIcon.classList.add('copy-icon');copyIcon.innerHTML='📋';copyIcon.onclick=()=>{navigator.clipboard.writeText(downloadUrl);showNotification('Link copied!')};link.appendChild(copyIcon);resultContainer.innerHTML='';resultContainer.appendChild(link);progressBarFill.style.width='100%';setTimeout(()=>{loaderContainer.style.display='none';progressBar.style.display='none';progressBarFill.style.width='0%'},500)}catch(error){showNotification('Failed to fetch extension: '+error.message);loaderContainer.style.display='none';progressBar.style.display='none';progressBarFill.style.width='0%'}}async function handleValidate(){const input=crxInput.value.trim();if(!input){crxInput.classList.add('shake');setTimeout(()=>{crxInput.classList.remove('shake')},500);showNotification('Please enter a URL or ID');return}scanContainer.classList.add('active');scanResult.classList.remove('visible');document.querySelector('.scan-line').style.opacity='1';let extensionId='';if(CHROME_STORE_PATTERN.test(input)||EXTENSION_ID_PATTERN.test(input)){extensionId=input.match(EXTENSION_ID_PATTERN)[0]}else{scanResult.textContent='Invalid format';scanResult.classList.add('visible');setTimeout(()=>{scanContainer.classList.remove('active');document.querySelector('.scan-line').style.opacity='0'},2000);return}try{const response=await fetch(`${EXTENSION_VALIDATOR_API}${extensionId}`,{method:'GET',headers:{'Accept':'application/json'}});const data=await response.json();scanResult.textContent=data.valid?'Extension is valid!':'Extension is invalid';scanResult.classList.add('visible')}catch(error){scanResult.textContent='Validation failed: '+error.message;scanResult.classList.add('visible')}setTimeout(()=>{scanContainer.classList.remove('active');document.querySelector('.scan-line').style.opacity='0'},2000)}});
     </script>
 </body>
 </html>
